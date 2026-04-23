@@ -26,7 +26,7 @@ skills/
 
 ### SKILL.md Format
 
-````markdown
+```markdown
 ---
 name: { skill-name }
 description:
@@ -44,13 +44,7 @@ description:
 ## How It Works
 
 {Numbered list explaining the skill's workflow}
-
-## Usage
-
-```bash
-bash /mnt/skills/user/{skill-name}/scripts/{script}.sh [args]
 ```
-````
 
 **Arguments:**
 
