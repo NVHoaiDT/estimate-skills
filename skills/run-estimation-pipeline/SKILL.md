@@ -78,14 +78,6 @@ Distribute RE-level features across delivery phases.
 POST `rePhases` to the AI service and download `DSV-Project-Estimation.xlsx`.
 → See `skills/export-excel/SKILL.md`
 
-## Pausing for Input
-
-Pause and ask the user before continuing when:
-
-- **After step 1**: confirm the extracted feature list is complete and accurate.
-- **Before step 5**: confirm `projectPlatform` (`web-only` / `mobile-only` / `cross-platform`).
-- **After step 7**: show the phase breakdown and ask if the user wants to adjust anything before export.
-
 ## Present Results to User
 
 After each step, briefly report the artifact produced:
