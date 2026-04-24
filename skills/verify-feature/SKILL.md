@@ -5,24 +5,23 @@ description: Pick the best estimation candidate for each feature from RAG search
 
 # Verify Feature
 
-Evaluates each feature's candidate list from `ragSearchResults` and selects the best database match, or flags the feature as unmatched when no candidate is close enough.
+Evaluates each feature's candidate list from `ragSearchResults.json` and selects the best database match, or flags the feature as unmatched when no candidate is close enough.
 
 ## How It Works
 
-1. Read `ragSearchResults` (output of `rag-search`).
+1. Read `ragSearchResults.json` (output of `rag-search`).
 2. For each item, evaluate the top candidate using the rules below.
-3. Build a `verifiedFeatures` array — one entry per original feature.
+3. Build a `verifiedFeatures.json` array — one entry per original feature.
 
 ## Matching Rules
 
 Apply in order:
 
-| Condition                                                                                            | Decision                                                                                                                         |
-| ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `candidates` is empty                                                                                | `isMatched: false`                                                                                                               |
-| Top candidate `similarity >= 0.88` AND module/feature/subFeature semantically fits the clientFeature | `isMatched: true`, use that candidate's estimates                                                                                |
-| Top candidate `0.75 <= similarity < 0.88`                                                            | Evaluate semantically: if the sub-feature clearly covers the client's intent → `isMatched: true`; otherwise → `isMatched: false` |
-| Top candidate `similarity < 0.75`                                                                    | `isMatched: false`                                                                                                               |
+| Condition                                                                                  | Decision           |
+| ------------------------------------------------------------------------------------------ | ------------------ |
+| `candidates` is empty                                                                      | `isMatched: false` |
+| Top candidate module/feature/subFeature semantically fits/clearly covers the clientFeature | `isMatched: true`  |
+| Top candidate don't semantically fits the clientFeature                                    | `isMatched: false` |
 
 When `isMatched: false`, fill estimation fields with `0` and module/feature/subFeature with `""`.
 
@@ -49,7 +48,7 @@ type VerifiedFeatureType = {
 };
 ```
 
-Assign to variable: `verifiedFeatures`
+Assign to: `verifiedFeatures.json`
 
 ## Example
 
@@ -92,7 +91,7 @@ Unmatched (Y) — will be estimated by AI:
 ✗ "Export project report to PDF"
 ✗ "Custom dashboard with drag-and-drop"
 
-Saved as `verifiedFeatures`. Ready to run `estimate-unmatched-feature`.
+Saved as `verifiedFeatures.json`. Ready to run `estimate-unmatched-feature`.
 ```
 
 ## Troubleshooting

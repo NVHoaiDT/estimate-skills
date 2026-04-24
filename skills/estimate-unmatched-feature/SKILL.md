@@ -5,15 +5,15 @@ description: AI-estimate hours for features that had no database match. Use afte
 
 # Estimate Unmatched Feature
 
-For every feature in `verifiedFeatures` where `isMatched: false`, produces a reasoned hour estimate by referencing the scale and complexity of the matched features in the same list.
+For every feature in `verifiedFeatures.json` where `isMatched: false`, produces a reasoned hour estimate by referencing the scale and complexity of the matched features in the same list.
 
 ## How It Works
 
-1. Read `verifiedFeatures` (output of `verify-feature`).
+1. Read `verifiedFeatures.json` (output of `verify-feature`).
 2. Separate matched (`isMatched: true`) and unmatched (`isMatched: false`) entries.
 3. Use the matched features as a reference calibration set.
 4. For each unmatched feature, reason about complexity relative to similar matched features and fill in all 10 estimate fields.
-5. Replace the unmatched entries in-place and output the full updated array as `verifiedFeatures`.
+5. Replace the unmatched entries in-place and output the full updated array as `verifiedFeatures.json`.
 
 ## Estimation Fields
 
@@ -39,9 +39,9 @@ For every feature in `verifiedFeatures` where `isMatched: false`, produces a rea
 
 ## Output
 
-The full `verifiedFeatures` array with unmatched entries filled in. Unmatched entries keep `isMatched: false`, `similarity: 0`, `module: ""`, `feature: ""`, `subFeature: ""`.
+The full `verifiedFeatures.json` with unmatched entries filled in. Unmatched entries keep `isMatched: false`, `similarity: 0`, `module: ""`, `feature: ""`, `subFeature: ""`.
 
-Assign to variable: `verifiedFeatures` (overwrites previous value)
+Assign to: `verifiedFeatures.json` (overwrites previous value)
 
 ## Present Results to User
 
@@ -55,7 +55,7 @@ Estimated N unmatched features using X matched features as reference:
 - "Custom dashboard with drag-and-drop"
   BE: 12h | FE Web: 30h | Design: 16h | BA: 6h | QC: 12h
 
-Updated `verifiedFeatures`. Ready to run `adjust-feature-by-platform`.
+Updated `verifiedFeatures.json`. Ready to run `adjust-feature-by-platform`.
 ```
 
 ## Troubleshooting

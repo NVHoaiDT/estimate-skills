@@ -18,15 +18,15 @@ export DSV_AUTH_TOKEN="your-jwt-token"
 
 ## How It Works
 
-1. Read `extractedFeatures` (output of `extract-features`).
+1. Read `extractedFeatures.json` (output of `extract-features`).
 2. Build the request payload: assign a stable `feat_NNN` id to each feature.
 3. Run `scripts/rag-search.sh` with the payload.
 4. Parse the JSON response.
-5. Save the result as `ragSearchResults`.
+5. Save the result as `ragSearchResults.json`.
 
 ## Arguments
 
-- `features` — JSON array of strings from `extract-features` (required)
+- `features` — JSON array of strings from `extractedFeatures.json` (required)
 
 ## Examples
 
@@ -70,7 +70,7 @@ DSV_AUTH_TOKEN=eyJ... \
 ]
 ```
 
-Saved as `ragSearchResults`. Pass directly to `verify-feature`.
+Saved as `ragSearchResults.json`. Ready to run `verify-feature`.
 
 ## Present Results to User
 
@@ -81,7 +81,7 @@ RAG search complete. N features searched, results returned:
 - feat_002 "View chat history" → 5 candidates (top similarity: 0.88)
 - feat_003 "Export report to PDF" → 1 candidate (top similarity: 0.63)
 
-Saved as `ragSearchResults`. Ready to run `verify-feature`.
+Saved as `ragSearchResults.json`. Ready to run `verify-feature`.
 ```
 
 ## Troubleshooting

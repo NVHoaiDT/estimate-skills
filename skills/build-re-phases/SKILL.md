@@ -5,14 +5,14 @@ description: Organize RE-level features into delivery phases for the estimation 
 
 # Build RE Phases
 
-Distributes `reFeatures` across logical delivery phases, producing the final `rePhases` structure that drives the Excel export.
+Distributes `reFeatures.json` across logical delivery phases, producing the final `rePhases.json` structure that drives the Excel export.
 
 ## How It Works
 
-1. Read `reFeatures` (output of `build-re-features`).
+1. Read `reFeatures.json` (output of `build-re-features`).
 2. Assign each RE-level feature to a delivery phase based on dependency order and business priority.
 3. Name each phase clearly (e.g. "Phase 1 — Core", "Phase 2 — Advanced").
-4. Output `rePhases` — every RE-level feature must appear in exactly one phase.
+4. Output `rePhases.json` — every RE-level feature must appear in exactly one phase.
 
 ## Output Shape
 
@@ -23,7 +23,7 @@ type RePhaseType = {
 };
 ```
 
-Assign to variable: `rePhases`
+Assign to: `rePhases.json`
 
 ## Phasing Guidelines
 
@@ -35,7 +35,7 @@ Assign to variable: `rePhases`
 
 ## Example
 
-Input (`reFeatures`):
+Input (`reFeatures.json`):
 
 ```json
 [
@@ -78,10 +78,10 @@ Phase 1 — Core (3 RE-features, 12 core features)
 Phase 2 — Advanced (2 RE-features, 7 core features)
   - Reporting, Admin Panel
 
-Saved as `rePhases`. Ready to run `export-excel`.
+Saved as `rePhases.json`. Ready to run `export-excel`.
 ```
 
 ## Troubleshooting
 
-- **Only one logical phase**: a single-phase `rePhases` array is valid — do not force artificial splits.
+- **Only one logical phase**: a single-phase `rePhases.json` is valid — do not force artificial splits.
 - **Client-defined phases**: if the requirements explicitly state phases, use those names and groupings verbatim.

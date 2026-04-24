@@ -9,10 +9,9 @@ Applies deterministic zeroing rules to estimation fields based on the project's 
 
 ## How It Works
 
-1. Confirm `projectPlatform` — ask the user if not yet known.
-2. Read `verifiedFeatures`.
-3. Run `scripts/adjust.sh` with the platform and features JSON, or apply the rules below manually.
-4. Save the result as `processedFeatures`.
+1. Read `verifiedFeatures.json`.
+2. Run `scripts/adjust.sh` with the platform and features JSON, or apply the rules below manually.
+3. Save the result as `processedFeatures.json`.
 
 ## Platform Rules
 
@@ -49,11 +48,11 @@ No changes — keep all fields as-is.
 ## Arguments
 
 - `platform` — one of `web-only`, `mobile-only`, `cross-platform` (required)
-- `features` — JSON array of `verifiedFeatures` (required)
+- `features` — JSON array of `verifiedFeatures.json` (required)
 
 ## Output
 
-Same shape as `verifiedFeatures` with relevant fields zeroed. Assign to: `processedFeatures`
+Same shape as `verifiedFeatures.json` with relevant fields zeroed. Assign to: `processedFeatures.json`
 
 ## Present Results to User
 
@@ -62,7 +61,7 @@ Adjusted N features for platform: web-only
 
 Zeroed fields per feature: feMobileEstimate, designMobileEstimate, qcMobileEstimate
 
-Saved as `processedFeatures`. Ready to run `build-re-features`.
+Saved as `processedFeatures.json`. Ready to run `build-re-features`.
 ```
 
 ## Troubleshooting

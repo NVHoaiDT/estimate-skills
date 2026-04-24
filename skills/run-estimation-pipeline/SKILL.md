@@ -25,7 +25,7 @@ Both variables are required for steps that call the AI service (rag-search, expo
          ↓
 [3] verify-feature            → verifiedFeatures
          ↓
-[4] estimate-unmatched-feature → verifiedFeatures  (updated in-place)
+[4] estimate-unmatched-feature → verifiedFeatures (updated in-place)
          ↓
 [5] adjust-feature-by-platform → processedFeatures
          ↓
@@ -50,7 +50,7 @@ Assign `feat_NNN` ids and call the AI service in one batch. Each feature gets up
 
 ### Step 3 — verify-feature
 
-For each feature, pick the best candidate (similarity ≥ 0.75 + semantic fit) or mark as unmatched.
+For each feature, pick the best candidate (semantic fit) or mark as unmatched.
 → See `skills/verify-feature/SKILL.md`
 
 ### Step 4 — estimate-unmatched-feature

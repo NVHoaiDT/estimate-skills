@@ -13,11 +13,11 @@ Reads client requirement documents or pasted text and produces a clean JSON arra
 2. Identify each distinct user-facing capability described.
 3. Normalize each capability into a concise English phrase (5–12 words).
 4. Deduplicate and remove purely non-functional entries (e.g. "the app must be fast").
-5. Output a JSON array assigned to a variable named `extractedFeatures`.
+5. Output a JSON array assigned to a variable named `extractedFeatures.json`.
 
 ## Rules
 
-- Each entry must describe **one atomic feature** (one verb + one noun).
+- Each entry must describe **one atomic feature**.
 - Do not group multiple capabilities into a single entry.
 - Preserve the client's original terminology where possible.
 - Exclude generic infrastructure concerns (hosting, CI/CD, monitoring) unless explicitly scoped in the requirements.
@@ -35,7 +35,7 @@ Reads client requirement documents or pasted text and produces a clean JSON arra
 ]
 ```
 
-Assign to variable: `extractedFeatures`
+Assign to: `extractedFeatures.json`
 
 ## Present Results to User
 
@@ -46,11 +46,10 @@ Extracted N features from [source]:
 2. Log in with Google
 ...
 
-Saved as `extractedFeatures`. Ready to run `rag-search`.
+Saved as `extractedFeatures.json`. Ready to run `rag-search`.
 ```
 
 ## Troubleshooting
 
 - **Duplicate / near-duplicate entries**: merge them into one representative phrase.
 - **Ambiguous features**: extract the narrowest concrete reading; note ambiguity in a comment block after the array.
-- **Very large requirements (100+ features)**: proceed in batches but combine into one final array before handing off.

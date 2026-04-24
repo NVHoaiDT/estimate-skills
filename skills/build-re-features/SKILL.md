@@ -5,15 +5,15 @@ description: Group processed features into RE-level feature buckets for the esti
 
 # Build RE Features
 
-Groups the flat `processedFeatures` list into semantically coherent RE-level feature objects. Each RE-level feature is a named bucket that holds the core features belonging to it.
+Groups the flat `processedFeatures.json` list into semantically coherent RE-level feature objects. Each RE-level feature is a named bucket that holds the core features belonging to it.
 
 ## How It Works
 
-1. Read `processedFeatures` (output of `adjust-feature-by-platform`).
+1. Read `processedFeatures.json` (output of `adjust-feature-by-platform`).
 2. Cluster features by their functional domain (authentication, messaging, payments, etc.).
 3. Assign a clear `reLevelFeatureName` to each cluster (use matched `module` values as hints for matched features).
 4. Build a `reFeatures` array where each item holds a `coreFeatures` sub-array.
-5. Every feature in `processedFeatures` must appear in exactly one `coreFeatures` list.
+5. Every feature in `processedFeatures.json` must appear in exactly one `coreFeatures` list.
 
 ## Output Shape
 
@@ -24,7 +24,7 @@ type REFeatureType = {
 };
 ```
 
-Assign to variable: `reFeatures`
+Assign to: `reFeatures.json`
 
 ## Grouping Guidelines
 
@@ -36,7 +36,7 @@ Assign to variable: `reFeatures`
 
 ## Example
 
-Input (`processedFeatures`):
+Input (`processedFeatures.json`):
 
 ```json
 [
@@ -82,7 +82,7 @@ Built N RE-level feature groups from M processed features:
 - Dashboard (1 feature)
 - Reporting (1 feature)
 
-Saved as `reFeatures`. Ready to run `build-re-phases`.
+Saved as `reFeatures.json`. Ready to run `build-re-phases`.
 ```
 
 ## Troubleshooting
